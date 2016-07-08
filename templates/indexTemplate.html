@@ -1,19 +1,301 @@
-<!DOCTYPE html>
-{% load staticfiles %}
+<!DOCTYPE html> {% load staticfiles %}
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>{% block title %}Nic Ni | Universidad Nacional de Ingeniería{% endblock title %}</title>
-    {% block header %}
-    {% endblock header %}
-  </head>
-  <body>
-    {% block content %}
+    <meta name="keywords" content="HTML5,CSS3,Template" />
+    <meta name="description" content="" />
+    <meta name="Author" content="Sergio Polanco, Walter Gadea" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
 
-    {% endblock content %}
+    <!-- SWIPER SLIDER -->
+    <link href="{% static 'assets/plugins/slider.revolution/css/extralayers.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/plugins/slider.revolution/css/settings.css' %}" rel="stylesheet" type="text/css" />
+    <!-- THEME CSS -->
+    <link href="{% static 'assets/css/essentials.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/layout.css' %}" rel="stylesheet" type="text/css" />
+
+    <!-- PAGE LEVEL SCRIPTS -->
+    <link href="{% static 'assets/css/header-1.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/color_scheme/green.css' %}" rel="stylesheet" type="text/css" id="color_scheme" />
+    <link href="{% static 'css/index.css' %}" rel="stylesheet" type="text/css" /> {% block header %} {% endblock header %}
+</head>
+
+<body class="smoothscroll enable-animation">
+    <div id="slidetop">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <h6><i class="icon-heart"></i> Que es el Nic Ni?</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et, iaculis ac massa. </p>
+                </div>
+
+                <div class="col-md-4">
+                    <h6><i class="icon-attachment"></i> Visitas Recientes</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#"><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit </a></li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet</a></li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i> Dolor sit amet,consectetur adipiscing elit amet</a></li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i> Consectetur adipiscing elit amet,consectetur adipiscing elit</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <h6><i class="icon-envelope"></i> Información de Contacto</h6>
+                    <ul class="list-unstyled">
+                        <li><b>Dirección:</b> Avenidad Simon Bolivar,
+                            <br /> Universidad Nacional de Ingeniería</li>
+                        <li><b>Teléfono:</b> (505)22703141</li>
+                        <li><b>Correo:</b>
+                            <a href="mailto:support@yourname.com"></a>info@nic.ni</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <a class="slidetop-toggle" href="#">
+            <!-- toggle button -->
+        </a>
+
+    </div>
+
+    <div id="wrapper">
+        <div id="header" class="sticky clearfix">
+            <header id="topNav">
+                <div class="container">
+                    <button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <ul class="pull-right nav nav-pills nav-second-main">
+
+                        <!-- SEARCH -->
+                        <li class="search">
+                            <a href="javascript:;">
+                                <i class="fa fa-search"></i>
+                            </a>
+                            <div class="search-box">
+                                <form action="page-search-result-1.html" method="get">
+                                    <div class="input-group">
+                                        <input type="text" name="src" placeholder="Buscar" class="form-control" />
+                                        <span class="input-group-btn">
+                        <button class="btn btn-primary" type="submit"><Buscar></Buscar></button>
+                      </span>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                        <!-- /SEARCH -->
+
+                    </ul>
+
+                    <a class="logo pull-left" href="index.html">
+                        <img src="{% static 'assets/images/logoNi.png' %}" alt="" />
+                    </a>
+                    <div class="navbar-collapse pull-right nav-main-collapse collapse submenu-dark">
+                        <nav class="nav-main">
+                            <ul id="topMain" class="nav nav-pills nav-main">
+                                <li>
+                                    <a class="" href="#">
+											Inicio
+										</a>
+                                </li>
+                                <li>
+                                    <a class="" href="#">
+											WHOIS
+										</a>
+                                </li>
+                                <li class="dropdown">
+                                    <a class="class=" dropdown-toggle "" href="#">
+											Servicios
+										</a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="" href="#">
+    											Dominios
+    										</a>
+                                        </li>
+                                        <li>
+                                            <a class="" href="#">
+    											Páginas Web
+    										</a>
+                                        </li>
+                                        <li>
+                                            <a class="" href="#">
+    											Hosting
+    										</a>
+                                        </li>
+
+                                        <li>
+                                            <a class="" href="#">
+    											Cuentas de Correo
+    										</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a class="class=" dropdown-toggle "" href="#">
+											Acerca del Nic.Ni
+										</a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="" href="#">
+    											Historia
+    										</a>
+                                        </li>
+                                        <li>
+                                            <a class="" href="#">
+    											Comité Consultivo
+    										</a>
+                                        </li>
+                                        <li>
+                                            <a class="" href="#">
+    											Estádisticas
+    										</a>
+                                        </li>
+
+                                        <li>
+                                            <a class="" href="#">
+    											Preguntas Frecuentes
+    										</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a class="" href="#">
+											Contáctenos
+										</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+        {% block content %} {% endblock content %}
+
+        <footer id="footer">
+            <div class="container">
+
+                <div class="row">
+
+                    <!-- col #1 -->
+                    <div class="spaced col-md-4 col-sm-4">
+
+                        <!-- Footer Logo -->
+                        <img class="footer-logo" src="{% static 'assets/images/logoNi.png' %}" alt="" />
+
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+
+                        <h2>(505) 22703141</h2>
+
+                    </div>
+                    <!-- /col #1 -->
+
+                    <!-- col #2 -->
+                    <div class="col-md-8 col-sm-8 hidden-sm hidden-xs">
+
+                      <div class="col-md-12 col-sm-12">
+
+                        <h4 class="letter-spacing-1">CONTÁCTENOS</h4>
+
+                        <!-- CONTACT MESSAGES -->
+                        <p id="alert_success" class="alert alert-success alert-mini">Mensaje enviado!</p>
+                        <p id="alert_failed" class="alert alert-danger alert-mini">Error al enviar mensaje!</p>
+                        <p id="alert_mandatory" class="alert alert-danger alert-mini">Por Favor, Complete todos los campos</p>
+
+                      <!-- CONTACT FORM -->
+                        <form class="validate" method="post" action="php/contact.php">
+
+                          <input type="text" value="" placeholder="Nombre*" maxlength="100" class="form-control required" name="contact[name]" />
+                          <input type="email" value="" placeholder="Correo*" data-msg-email="Please enter a valid email address." class="form-control required" name="contact[email]" />
+                          <textarea maxlength="5000" placeholder="Mensaje*" rows="3" class="form-control required" name="contact[message]"></textarea>
+                          <input type="submit" value="Enviar Mensaje" class="btn btn-success" />
+
+                        </form>
+                      <!-- /CONTACT FORM -->
+
+                      </div>
+
+                    </div>
+                    <!-- /col #2 -->
+
+                </div>
+
+            </div>
+
+            <div class="copyright has-social">
+                <div class="container">
+
+                    <!-- Social Icons -->
+                    <div class="pull-right">
+                        <a href="#" class="social-icon social-icon-sm social-icon-transparent social-facebook" data-toggle="tooltip" data-placement="top" title="Facebook">
+                            <i class="icon-facebook"></i>
+                            <i class="icon-facebook"></i>
+                        </a>
+
+                        <a href="#" class="social-icon social-icon-sm social-icon-transparent social-twitter" data-toggle="tooltip" data-placement="top" title="Twitter">
+                            <i class="icon-twitter"></i>
+                            <i class="icon-twitter"></i>
+                        </a>
+
+                        <a href="#" class="social-icon social-icon-sm social-icon-transparent social-gplus" data-toggle="tooltip" data-placement="top" title="Google plus">
+                            <i class="icon-gplus"></i>
+                            <i class="icon-gplus"></i>
+                        </a>
+
+                        <a href="#" class="social-icon social-icon-sm social-icon-transparent social-linkedin" data-toggle="tooltip" data-placement="top" title="Linkedin">
+                            <i class="icon-linkedin"></i>
+                            <i class="icon-linkedin"></i>
+                        </a>
+
+                        <a href="#" class="social-icon social-icon-sm social-icon-transparent social-rss" data-toggle="tooltip" data-placement="top" title="Rss">
+                            <i class="icon-rss"></i>
+                            <i class="icon-rss"></i>
+                        </a>
+                    </div>
+                    <!-- /Social Icons -->
+
+                    <div class="copyright-text pull-left">
+                        &copy; Todos los Derechos Reservados, Universidad Nacional de Ingeniería
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+    </div>
 
 
-    {% block script %}
-    {% endblock script %}
-  </body>
+    <script type="text/javascript">
+        var plugin_path = "{% static 'assets/plugins/' %}";
+    </script>
+    <script type="text/javascript" src="{% static 'assets/plugins/jquery/jquery-2.1.4.min.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'assets/js/scripts.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'assets/plugins/slider.revolution/js/jquery.themepunch.tools.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/slider.revolution/js/jquery.themepunch.revolution.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/view/demo.revolution_slider.js' %}"></script>
+
+    <!-- SWIPER SLIDER -->
+    <script type="text/javascript" src="{% static 'assets/plugins/slider.swiper/dist/js/swiper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/view/demo.swiper_slider.js' %}"></script>
+    {% block script %} {% endblock script %}
+</body>
+
 </html>

@@ -1,0 +1,19 @@
+#header {
+
+  background-color: #003782 !important;
+}
+#topMain.nav-pills>li>a{
+  color: #fff !important;
+}
+
+#header li.search i.fa{
+  color: #fff !important;
+}
+
+#topNav div.submenu-dark ul.dropdown-menu{
+  background-color: #003782 !important;
+}
+
+#footer{
+  background: linear-gradient(to bottom, #003782 0%,#313131 100%) !important;
+}
