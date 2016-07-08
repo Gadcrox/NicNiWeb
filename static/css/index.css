@@ -17,3 +17,11 @@
 #footer{
   background: linear-gradient(to bottom, #003782 0%,#313131 100%) !important;
 }
+
+.blue-1-text{
+  color: #2b5996;
+}
+
+.blue-1-bg{
+  background-color: #2b5996;
+}
