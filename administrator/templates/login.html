@@ -1,0 +1,118 @@
+{% extends 'loginTemplate.html' %}
+{% load staticfiles %}
+
+{% block title %}Login | Nic Ni{% endblock title %}
+
+{% block header %}
+{% endblock header %}
+
+{% block content %}
+<div id="container" class="cls-container">
+
+  <!-- BACKGROUND IMAGE -->
+  <!--===================================================-->
+  <div id="bg-overlay" class="bg-img img-balloon"></div>
+
+
+  <!-- HEADER -->
+  <!--===================================================-->
+  <div class="cls-header cls-header-lg">
+    <div class="cls-brand">
+      <a class="box-inline" href="index.html">
+        <!-- <img alt="Nifty Admin" src="img/logo.png" class="brand-icon"> -->
+        <span class="brand-title">Admin Website <span class="text-thin">Nic.Ni</span></span>
+      </a>
+    </div>
+  </div>
+  <!--===================================================-->
+
+
+  <!-- LOGIN FORM -->
+  <!--===================================================-->
+  <div class="cls-content">
+    <div class="cls-content-sm panel">
+      <div class="panel-body">
+        <p class="pad-btm">Entrar con tu cuenta</p>
+        <form name="form-access" method="post" action="">
+          {% csrf_token %}
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-user"></i></div>
+              <input type="text" name="{{ username }}" class="form-control" placeholder="Usuario">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+              <input type="password" name="password" class="form-control" placeholder="Contraseña">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-8 text-left checkbox">
+              <label class="form-checkbox form-icon">
+              <input name="remember" type="checkbox"> Recuerdame
+              </label>
+            </div>
+            <div class="col-xs-4">
+              <div class="form-group text-right">
+              <input type="submit" class="btn btn-info text-uppercase" name="btn-login" value="Acceder">
+              </div>
+            </div>
+
+          </div>
+        </form>
+        {% if mensaje = 'false' %}
+        <div class="alert alert-danger fade in">
+          <button class="close" data-dismiss="alert"><span>&times;</span></button>
+          <strong>Usuario/contraseña incorrecta</strong>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="pad-ver">
+      <a href="pages-password-reminder.html" class="btn-link mar-rgt">Recordar Contraseña ?</a>
+    </div>
+  </div>
+  <!--===================================================-->
+
+
+  <!-- DEMO PURPOSE ONLY -->
+  <!--===================================================-->
+  <div class="demo-bg">
+    <div id="demo-bg-list">
+      <div class="demo-loading"><i class="fa fa-refresh"></i></div>
+      <img class="demo-chg-bg bg-trans" src="{% static 'nifty/img/bg-img/thumbs/bg-trns.jpg' %}" alt="Background Image">
+      <img class="demo-chg-bg" src="{% static 'nifty/img/bg-img/thumbs/bg-img-1.jpg' %}" alt="Background Image">
+      <img class="demo-chg-bg active" src="{% static 'nifty/img/bg-img/thumbs/bg-img-2.jpg' %}" alt="Background Image">
+      <img class="demo-chg-bg" src="{% static 'nifty/img/bg-img/thumbs/bg-img-3.jpg' %}" alt="Background Image">
+      <img class="demo-chg-bg" src="{% static 'nifty/img/bg-img/thumbs/bg-img-4.jpg' %}" alt="Background Image">
+      <img class="demo-chg-bg" src="{% static 'nifty/img/bg-img/thumbs/bg-img-5.jpg' %}" alt="Background Image">
+      <img class="demo-chg-bg" src="{% static 'nifty/img/bg-img/thumbs/bg-img-6.jpg' %}" alt="Background Image">
+      <img class="demo-chg-bg" src="{% static 'nifty/img/bg-img/thumbs/bg-img-7.jpg' %}" alt="Background Image">
+    </div>
+  </div>
+  <!--===================================================-->
+
+
+
+</div>
+{% endblock content %}
+{% block script %}
+  <script type="text/javascript" src="{% static 'assets/plugins/jquery/jquery-2.1.4.min.js' %}"></script>
+
+
+<!--BootstrapJS [ RECOMMENDED ]-->
+  <script src="{% static 'nifty/js/bootstrap.min.js' %}"></script>
+
+
+<!--Fast Click [ OPTIONAL ]-->
+<script src="{% static 'nifty/plugins/fast-click/fastclick.min.js' %}"></script>
+
+
+<!--Nifty Admin [ RECOMMENDED ]-->
+<script src="{% static 'nifty/js/nifty.min.js' %}"></script>
+
+
+<!--Background Image [ DEMONSTRATION ]-->
+<script src="{% static 'nifty/js/demo/bg-images.js' %}"></script>
+{% endblock script %}

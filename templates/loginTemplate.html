@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Login | Nic Ni{% endblock title %}</title>
+    <link href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+
+
+    <!--Nifty Stylesheet [ REQUIRED ]-->
+    <link href="{% static 'nifty/css/nifty.min.css' %}" rel="stylesheet">
+
+
+    <!--Font Awesome [ OPTIONAL ]-->
+    <link href="{% static 'nifty/plugins/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+
+
+    <!--Demo [ DEMONSTRATION ]-->
+    <link href="{% static 'nifty/css/demo/nifty-demo.min.css' %}" rel="stylesheet">
+
+
+
+
+    <!--SCRIPT-->
+    <!--=================================================-->
+
+    <!--Page Load Progress Bar [ OPTIONAL ]-->
+    <link href="{% static 'nifty/plugins/pace/pace.min.css' %}" rel="stylesheet">
+    <script src="{% static 'nifty/plugins/pace/pace.min.js' %}"></script>
+    {% block head %}
+    {% endblock head %}
+  </head>
+  <body>
+    {% block content %}
+    {% endblock content %}
+
+    {% block script %}
+    {% endblock script %}
+  </body>
+</html>

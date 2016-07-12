@@ -93,7 +93,7 @@
 
                       <!-- Dropdown footer -->
                       <div class="pad-all text-right">
-                          <a href="pages-login.html" class="btn btn-primary">
+                          <a href="{% url 'administrator.logout' %}" class="btn btn-primary">
                               <i class="fa fa-sign-out fa-fw"></i> Salir
                           </a>
                       </div>
@@ -109,7 +109,7 @@
     <div class="boxed">
       <div id="content-container">
         <div id="page-title">
-					<h1 class="page-header text-overflow">Dashboard</h1>
+					<h1 class="page-header text-overflow">{% block pagetittle %} Dashboard {% endblock pagetittle %}</h1>
 				</div>
         <ol class="breadcrumb">
           <li class="active"><a href="#">Inicio</a></li>
@@ -215,6 +215,7 @@
       </nav>
     </div>
   </div>
+  <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
   {% block content %}
   {% endblock content %}
 
