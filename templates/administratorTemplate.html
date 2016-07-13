@@ -38,8 +38,8 @@
     <!--Page Load Progress Bar [ OPTIONAL ]-->
     <link href="{% static 'nifty/plugins/pace/pace.min.css' %}" rel="stylesheet">
     <script src="{% static 'nifty/plugins/pace/pace.min.js' %}"></script>
-    {% block head %}
-    {% endblock head %}
+    {% block header %}
+    {% endblock header %}
   </head>
   <body>
   <div id="container" class="effect mainnav-lg">
@@ -62,6 +62,7 @@
 
             </li>
           </ul>
+
           <ul class="nav navbar-top-links pull-right">
 
               <!--User dropdown-->
@@ -71,7 +72,7 @@
                       <span class="pull-right">
                           <img class="img-circle img-user media-object" src="{% static 'nifty/img/av1.png' %}" alt="Profile Picture">
                       </span>
-                      <div class="username hidden-xs">John Doe</div>
+                      <div class="username hidden-xs">{{ user.username }}</div>
                   </a>
 
 
@@ -112,9 +113,12 @@
 					<h1 class="page-header text-overflow">{% block pagetittle %} Dashboard {% endblock pagetittle %}</h1>
 				</div>
         <ol class="breadcrumb">
-          <li class="active"><a href="#">Inicio</a></li>
+          <li class=""><a href="#">Inicio</a></li>
+          <li class=""><a href="#">{% block breadcumbs %}{% endblock breadcumbs %}</a></li>
         </ol>
         <div class="page-content">
+          {% block content %}
+          {% endblock content %}
 
         </div>
       </div>
@@ -146,7 +150,7 @@
                 <ul id="mainnav-menu" class="list-group">
                   <li class="list-header">Navegación</li>
                   <li class="active-link">
-                    <a href="index.html">
+                    <a href="{% url 'administrator.index' %}">
                       <i class="fa fa-dashboard"></i>
                       <span class="menu-title">
                         <strong>Dashboard</strong>
@@ -155,7 +159,7 @@
                   </li>
                   <li class="list-header">Usuarios</li>
                   <li>
-                    <a href="index.html">
+                    <a href="#">
                       <i class="fa fa-user"></i>
                       <span class="menu-title">
                         <strong>Cuentas</strong>
@@ -163,7 +167,7 @@
                       <i class="arrow"></i>
                     </a>
                     <ul class="collapse">
-                      <li><a href="layouts-collapsed-navigation.html">Agregar</a></li>
+                      <li><a href="{% url 'accounts.add' %}">Agregar</a></li>
                       <li><a href="layouts-collapsed-navigation.html">Modificar</a></li>
                     </ul>
                   </li>
@@ -216,8 +220,6 @@
     </div>
   </div>
   <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
-  {% block content %}
-  {% endblock content %}
 
   <script type="text/javascript" src="{% static 'assets/plugins/jquery/jquery-2.1.4.min.js' %}"></script>
 
@@ -261,6 +263,7 @@
 
   <!--Specify page [ SAMPLE ]-->
   <script src="{% static 'nifty/js/demo/dashboard.js' %}"></script>
+  <script src="{% static 'js/adminIndex.js' %}"></script>
   {% block script %}
   {% endblock script %}
   </body>

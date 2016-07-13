@@ -14,7 +14,7 @@ def home_view(request):
 
 def login_view(request):
     if request.user.is_authenticated():
-        return redirect(reverse('administrador.index'))
+        return redirect(reverse('administrator.index'))
 
     mensaje = ''
     if request.method == 'POST':

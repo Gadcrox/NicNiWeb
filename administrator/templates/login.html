@@ -18,7 +18,7 @@
   <!--===================================================-->
   <div class="cls-header cls-header-lg">
     <div class="cls-brand">
-      <a class="box-inline" href="index.html">
+      <a class="box-inline" href="#">
         <!-- <img alt="Nifty Admin" src="img/logo.png" class="brand-icon"> -->
         <span class="brand-title">Admin Website <span class="text-thin">Nic.Ni</span></span>
       </a>
@@ -38,7 +38,7 @@
           <div class="form-group">
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-user"></i></div>
-              <input type="text" name="{{ username }}" class="form-control" placeholder="Usuario">
+              <input type="text" value="{{ username }}" name="username" class="form-control" placeholder="Usuario">
             </div>
           </div>
           <div class="form-group">
@@ -61,7 +61,7 @@
 
           </div>
         </form>
-        {% if mensaje = 'false' %}
+        {% if mensaje == 'false' %}
         <div class="alert alert-danger fade in">
           <button class="close" data-dismiss="alert"><span>&times;</span></button>
           <strong>Usuario/contraseña incorrecta</strong>
