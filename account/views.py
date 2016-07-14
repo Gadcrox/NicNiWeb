@@ -17,6 +17,11 @@ from django.conf import settings
 def profile_add_view(request):
     return render(request, 'add.html')
 
+@login_required
+def profile_modify_view(request):
+    user_list = User.objects.all().order_by('username')
+    context = { 'user_list': user_list }
+    return render(request, 'modify.html', context)
 
 class create_account(TemplateView):
 
@@ -38,7 +43,7 @@ class create_account(TemplateView):
 
             try:
                 if User.objects.filter(username=username):
-                    message = {'status':'1','message': 'Lo sentimos, este nombre de usuario ya ha siso registrado, por favor seleccione otro...'}
+                    message = {'status':'1','message': 'Lo sentimos, este nombre de usuario ya ha sido registrado, por favor seleccione otro...'}
                     data = json.dumps(message)
                     return HttpResponse(data, content_type =  "application/json")
             except:

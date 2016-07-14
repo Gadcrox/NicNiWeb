@@ -29,13 +29,6 @@
     <!--Demo script [ DEMONSTRATION ]-->
     <link href="{% static 'nifty/css/demo/nifty-demo.min.css' %}" rel="stylesheet">
 
-
-
-
-    <!--SCRIPT-->
-    <!--=================================================-->
-
-    <!--Page Load Progress Bar [ OPTIONAL ]-->
     <link href="{% static 'nifty/plugins/pace/pace.min.css' %}" rel="stylesheet">
     <script src="{% static 'nifty/plugins/pace/pace.min.js' %}"></script>
     {% block header %}
@@ -116,10 +109,9 @@
           <li class=""><a href="#">Inicio</a></li>
           <li class=""><a href="#">{% block breadcumbs %}{% endblock breadcumbs %}</a></li>
         </ol>
-        <div class="page-content">
+        <div id="page-content">
           {% block content %}
           {% endblock content %}
-
         </div>
       </div>
 
@@ -168,7 +160,7 @@
                     </a>
                     <ul class="collapse">
                       <li><a href="{% url 'accounts.add' %}">Agregar</a></li>
-                      <li><a href="layouts-collapsed-navigation.html">Modificar</a></li>
+                      <li><a href="{% url 'accounts.modify' %}">Modificar</a></li>
                     </ul>
                   </li>
 
@@ -221,7 +213,7 @@
   </div>
   <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
 
-  <script type="text/javascript" src="{% static 'assets/plugins/jquery/jquery-2.1.4.min.js' %}"></script>
+  <script src="{% static 'nifty/js/jquery-2.1.1.min.js' %}"></script>
 
 
   <!--BootstrapJS [ RECOMMENDED ]-->
