@@ -23,6 +23,45 @@ def profile_modify_view(request):
     context = { 'user_list': user_list }
     return render(request, 'modify.html', context)
 
+class view_account(TemplateView):
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax() and request.method == 'POST':
+            try:
+                idAccount = request.POST.get('idAccount')
+            except:
+                message = {'status':'2','message': str(traceback.format_exc())}
+                data = json.dumps(message)
+                return HttpResponse(data, content_type =  "application/json")
+
+            try:
+                if not User.objects.filter(id = idAccount):
+                    message = {'status':'1','message': 'Lo sentimos, este nombre de usuario no existe...'}
+                    data = json.dumps(message)
+                    return HttpResponse(data, content_type =  "application/json")
+            except:
+                    message = {'status':'2','message': str(traceback.format_exc())}
+                    data = json.dumps(message)
+                    return HttpResponse(data, content_type =  "application/json")
+
+            try:
+                user = User.objects.get(id = idAccount)
+                response_data = {}
+                response_data['status'] = '3'
+                response_data['id'] = user.id
+                response_data['username'] = user.username
+                response_data['firstname'] = user.first_name
+                response_data['lastname'] = user.last_name
+                response_data['password'] = user.password
+                response_data['is_superuser'] = user.is_superuser
+                response_data['is_active'] = user.is_active
+
+                data = json.dumps(response_data)
+                return HttpResponse(data, content_type =  "application/json")
+            except:
+                message = {'status':'2','message': str(traceback.format_exc())}
+                data = json.dumps(message)
+                return HttpResponse(data, content_type =  "application/json")
+
 class create_account(TemplateView):
 
     def post(self, request, *args, **kwargs):
@@ -37,7 +76,7 @@ class create_account(TemplateView):
                 newpassword = request.POST.get('password')
 
             except:
-                message = {'status':'False','message': str(traceback.format_exc())}
+                message = {'status':'2','message': str(traceback.format_exc())}
                 data = json.dumps(message)
                 return HttpResponse(data, content_type =  "application/json")
 
@@ -67,6 +106,6 @@ class create_account(TemplateView):
                 data = json.dumps(message)
                 return HttpResponse(data, content_type =  "application/json")
             except:
-                message = {'status':'False','message': str(traceback.format_exc())}
+                message = {'status':'2','message': str(traceback.format_exc())}
                 data = json.dumps(message)
                 return HttpResponse(data, content_type =  "application/json")

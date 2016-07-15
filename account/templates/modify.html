@@ -58,7 +58,7 @@
                 <div class="col-sm-offset-3 col-sm-9">
                   <div class="checkbox">
                     <label id="lblAdmin" class="form-checkbox form-normal">
-                      <input name="admin" id="active" type="checkbox"> Administrador
+                      <input name="admin" id="admin" type="checkbox"> Administrador
                     </label>
                   </div>
                 </div>
@@ -76,7 +76,7 @@
             </div>
             <div class="panel-footer text-right">
               <button class="btn btn-info btn-labeled fa fa-plus fa-lg" type="submit">Actualizar</button>
-              <button class="btn btn-warning btn-labeled fa fa-repeat fa-lg" id="btnLimpiar" type="reset">Limpiar</button>
+              <button class="btn btn-warning btn-labeled fa fa-times fa-lg" id="btnCancelar" type="BUTTON">Cancelar</button>
             </div>
           </fieldset>
 
@@ -94,16 +94,20 @@
           <h3 class="panel-title">Lista de Cuentas de Usuario</h3>
         </div>
         <div class="panel-body">
-          <table id="demo-dt-basic" class="table table-striped table-bordered" cellspacing="0" width="100%">
+          <form name="form-id-account" class="hidden" action="index.html" method="post">
+            {% csrf_token %}
+            <input type="text" name="idAccount" id="idAccount">
+          </form>
+          <table id="table-data" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
               <tr>
                 <th class="hide">ID</th>
                 <th>USUARIO</th>
                 <th>NOMBRES</th>
                 <th>APELLIDOS</th>
-                <th class="min-desktop">ADMINISTRADOR</th>
-                <th class="min-desktop">ACTIVO</th>
-                <th class="min-desktop sorting_disabled"></th>
+                <th>ADMIN</th>
+                <th>ACTIVO</th>
+                <th class="sorting_disabled"></th>
               </tr>
             </thead>
             <tbody>
@@ -113,9 +117,19 @@
                 <td>{{ user.username }}</td>
                 <td>{{ user.first_name }}</td>
                 <td>{{ user.last_name }}</td>
-                <td>{{ user.is_superuser }}</td>
                 <td>
-                  {% if user.isactive == true %}
+                  {% if user.is_superuser == True %}
+                    <label class="form-checkbox form-normal form-primary active form-text">
+                      <input type="checkbox" checked disabled="disabled">
+                    </label>
+                  {% else %}
+                    <label class="form-checkbox form-normal form-primary active form-text">
+                      <input type="checkbox" disabled="disabled">
+                    </label>
+                  {% endif %}
+                </td>
+                <td>
+                  {% if user.is_active == True %}
                     <span class="label label-table label-success">Activo</span>
                   {% else %}
                     <span class="label label-table label-danger">Inactivo</span>
@@ -124,34 +138,32 @@
                 </td>
                 <td>
                   <div class="hidden-sm hidden-xs action-buttons">
-                    <a class="btn btn-warning btn-sm" href="#">
+                    <a class="btn btn-info btn-sm" href="#">
                       <i class="ace-icon fa fa-search-plus icon-lg"></i>
                     </a>
-                    <a class="btn btn-info btn-sm" href="#">
+                    <a class="btn btn-warning btn-sm" href="#">
                       <i class="ace-icon fa fa-pencil icon-lg"></i>
                     </a>
                   </div>
-                  <div class="hidden-md hidden-lg">
+                  <div class="hidden-lg hidden-sm">
                     <div class="inline position-relative">
-                      <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
-                        <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-                      </button>
-                      <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-                        <li>
-                          <a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-                            <span class="blue">
-                              <i class="ace-icon fa fa-search-plus bigger-120"></i>
-                            </span>
-                          </a>
-                        </li>
-                        <li>
-                        <a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-                          <span class="green">
-                            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                          </span>
-                        </a>
-                        </li>
-                      </ul>
+                      <button class="btn btn-icon fa fa-caret-down icon-lg dropdown-toggle" data-toggle="dropdown"></button>
+                        <ul class="dropdown-menu dropdown-only-icon dropdown-menu-right">
+                          <li>
+                            <a href="#">
+                              <span class="blue">
+                                <i class="ace-icon fa fa-search-plus icon-lg"></i>
+                              </span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#">
+                              <span class="green">
+                                <i class="ace-icon fa fa-pencil icon-lg"></i>
+                              </span>
+                            </a>
+                          </li>
+                        </ul>
                     </div>
                   </div>
                 </td>

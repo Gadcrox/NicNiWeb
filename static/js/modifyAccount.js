@@ -8,7 +8,7 @@ function load(){
 
   $( "[href='/administrator/accounts/modify/']" ).parent().addClass('active-link').parent().addClass('in').parent().addClass('active-sub active');
 
-  $('#demo-dt-basic').dataTable( {
+  $('#table-data').dataTable( {
     "responsive": true,
     "language": {
       "lengthMenu": "Mostrar _MENU_ registros",
@@ -23,5 +23,46 @@ function load(){
         "next": '<i class="fa fa-angle-right"></i>'
       }
     }
+  });
+
+  $(document).on('click','i.ace-icon.fa.fa-pencil.icon-lg', function(e){
+    var idAccount = $.trim($($(this).parent().parent().parent().parent().children(":nth-child(1)")).text());
+    $("#idAccount").val(idAccount);
+    var formData = new FormData( $( "form[name='form-id-account']" )[0] );
+
+    $.ajax({
+            url : '/administrator/accounts/view_account/',
+            type : 'post',
+            data : formData,
+            async : true,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+              if(data.status == '3'){
+                $("#username").val(data.username);
+                $("#firstname").val(data.firstname);
+                $("#lastname").val(data.lastname);
+                $("#password").val(data.password);
+                $("#confirmpassword").val(data.password);
+                if(data.is_superuser == true){
+                  $('#lblAdmin').niftyCheck('toggleOn');
+                }
+                if(data.is_active == true){
+                  $('#lblActive').niftyCheck('toggleOn');
+                }
+              }else {
+
+              }
+
+            },
+            error: function (XMLHttpRequest, estado, errorS) {
+              var error = eval("(" + XMLHttpRequest.responseText + ")");
+              console.log(error.Message);
+              console.log(estado);
+              console.log(errorS);
+            },
+            complete: function (jqXHR, estado) {
+            }
+        });
   });
 }

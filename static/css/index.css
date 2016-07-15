@@ -25,3 +25,39 @@
 .blue-1-bg{
   background-color: #2b5996;
 }
+
+.dropdown-menu.dropdown-only-icon{
+  min-width: 50px !important;
+}
+
+.dropdown-menu.dropdown-only-icon>li{
+  margin:4px !important;
+}
+.dropdown-menu>li>a:hover {
+    background-color: #fee188 !important;
+
+}
+.dropdown-menu.dropdown-only-icon>li>a .ace-icon{
+  width:18px;
+  display:inline-block;
+  text-align:center
+}
+.dropdown-menu.dropdown-only-icon>li>a .icon-2x{
+  width:36px
+}
+
+.inline{
+  display:inline-block!important
+}
+
+.position-relative {
+    position: relative;
+}
+
+.green{
+  color:#69aa46!important
+}
+
+.blue{
+  color:#478fca!important
+}

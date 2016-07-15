@@ -128,7 +128,6 @@ function load() {
       limpiar();
   });
 
-
 }
 
 function limpiar() {
