@@ -1,0 +1,158 @@
+{% extends 'administratorTemplate.html' %}
+{% load staticfiles %}
+
+{% block title %}Administrador | Nic Ni{% endblock title %}
+
+{% block header %}
+
+<link href="{% static 'nifty/plugins/bootstrap-validator/bootstrapValidator.min.css' %}" rel="stylesheet">
+
+<link href="{% static 'assets/css/essentials.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'assets/css/layout.css' %}" rel="stylesheet" type="text/css" />
+
+<!-- PAGE LEVEL SCRIPTS -->
+<link href="{% static 'assets/css/header-1.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'assets/css/color_scheme/green.css' %}" rel="stylesheet" type="text/css" id="color_scheme" />
+{% endblock header %}
+{% block pagetittle %} Carrusel {% endblock pagetittle %}
+{% block breadcumbs %}Editar Carrusel{% endblock breadcumbs %}
+
+{% block content %}
+
+<h2 class="owl-featured"><strong>Imagenes</strong> presentadas en el carrusel principal</h2>
+<div class="owl-carousel featured nomargin" data-plugin-options='{"singleItem": false, "stopOnHover":false, "autoPlay":true, "autoHeight": false, "navigation": true, "pagination": false}'>
+	<div>
+		<div class="owl-featured-item">
+			<a href="#" class="figure">
+				<span><i class="fa fa-plus"></i></span>
+				<img class="img-responsive" src="{% static 'assets/images/demo/720x400/1-min.jpg' %}" alt="">
+			</a>
+			<div class="owl-featured-detail">
+				<a class="featured-title" href="#">Lorem Ipsim Dolor</a>
+			</div>
+		</div>
+	</div>
+  <div>
+		<div class="owl-featured-item">
+			<a href="#" class="figure">
+				<span><i class="fa fa-plus"></i></span>
+				<img class="img-responsive" src="{% static 'assets/images/demo/720x400/1-min.jpg' %}" alt="">
+			</a>
+			<div class="owl-featured-detail">
+				<a class="featured-title" href="#">Lorem Ipsim Dolor</a>
+			</div>
+		</div>
+	</div>
+  <div>
+		<div class="owl-featured-item">
+			<a href="#" class="figure">
+				<span><i class="fa fa-plus"></i></span>
+				<img class="img-responsive" src="{% static 'assets/images/demo/720x400/1-min.jpg' %}" alt="">
+			</a>
+			<div class="owl-featured-detail">
+				<a class="featured-title" href="#">Lorem Ipsim Dolor</a>
+			</div>
+		</div>
+	</div>
+  <div>
+		<div class="owl-featured-item">
+			<a href="#" class="figure">
+				<span><i class="fa fa-plus"></i></span>
+				<img class="img-responsive" src="{% static 'assets/images/demo/720x400/1-min.jpg' %}" alt="">
+			</a>
+			<div class="owl-featured-detail">
+				<a class="featured-title" href="#">Lorem Ipsim Dolor</a>
+			</div>
+		</div>
+	</div>
+  <div>
+		<div class="owl-featured-item">
+			<a href="#" class="figure">
+				<span><i class="fa fa-plus"></i></span>
+				<img class="img-responsive" src="{% static 'assets/images/demo/720x400/1-min.jpg' %}" alt="">
+			</a>
+			<div class="owl-featured-detail">
+				<a class="featured-title" href="#">Lorem Ipsim Dolor</a>
+			</div>
+		</div>
+	</div>
+  <div>
+		<div class="owl-featured-item">
+			<a href="#" class="figure">
+				<span><i class="fa fa-plus"></i></span>
+				<img class="img-responsive" src="{% static 'assets/images/demo/720x400/1-min.jpg' %}" alt="">
+			</a>
+			<div class="owl-featured-detail">
+				<a class="featured-title" href="#">Lorem Ipsim Dolor</a>
+			</div>
+		</div>
+	</div>
+  <div>
+		<div class="owl-featured-item">
+			<a href="#" class="figure">
+				<span><i class="fa fa-plus"></i></span>
+				<img class="img-responsive" src="{% static 'assets/images/demo/720x400/1-min.jpg' %}" alt="">
+			</a>
+			<div class="owl-featured-detail">
+				<a class="featured-title" href="#">Lorem Ipsim Dolor</a>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel">
+      <div class="panel-heading">
+        <h3 class="panel-title">Imagen</h3>
+      </div>
+      <!--Horizontal Form-->
+      <!--===================================================-->
+      <form class="form-horizontal" name="form-add-item" id="form-add-item" >
+        <fieldset>
+          {% csrf_token %}
+          <div class="panel-body">
+            <div class="form-group" id="fgUserName">
+              <label class="col-sm-3 control-label">Título:</label>
+              <div class="col-sm-9">
+                <input type="text" placeholder="Título" name="tittle" id="tittle" class="form-control">
+              </div>
+            </div>
+            <div class="form-group" id="fgLastName">
+              <label class="col-sm-3 control-label" for="demo-hor-inputemail">Descripción:</label>
+              <div class="col-sm-9">
+                <input type="text" placeholder="Descripción" name="description" id="description" class="form-control">
+              </div>
+            </div>
+            <div class="form-group" id="fgLastName">
+              <label class="col-sm-3 control-label" for="demo-hor-inputemail">Imagen:</label>
+              <div class="col-sm-9">
+                <input class="custom-file-upload" type="file" id="file" name="fileImage" id="fileImage" data-btn-text="Seleccionar Archivo" />
+                <small class="text-muted block">Tamaño Maximo: 10Mb (pdf/jpg/png)</small>
+              </div>
+            </div>
+
+          </div>
+          <div class="panel-footer text-right">
+            <button class="btn btn-info btn-labeled fa fa-plus fa-lg" type="submit">Guardar</button>
+            <button class="btn btn-warning btn-labeled fa fa-times fa-lg" id="btnLimpiar" type="button">Cancelar</button>
+          </div>
+        </fieldset>
+
+      </form>
+      <!--===================================================-->
+      <!--End Horizontal Form-->
+
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+{% block script %}
+
+<script type="text/javascript">var plugin_path = "{% static 'assets/plugins/' %}";</script>
+<script type="text/javascript" src="{% static 'assets/plugins/jquery/jquery-2.1.4.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'assets/js/scripts.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/addCarousel.js' %}"></script>
+<script src="{% static 'nifty/plugins/bootstrap-validator/bootstrapValidator.min.js' %}"></script>
+{% endblock script %}

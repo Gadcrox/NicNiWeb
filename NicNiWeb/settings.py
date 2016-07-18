@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'index',
     'administrator',
-    'account'
+    'account',
+    'carousel'
 ]
 
 MIDDLEWARE_CLASSES = [
