@@ -51,7 +51,6 @@ class view_account(TemplateView):
                 response_data['username'] = user.username
                 response_data['firstname'] = user.first_name
                 response_data['lastname'] = user.last_name
-                response_data['password'] = user.password
                 response_data['is_superuser'] = user.is_superuser
                 response_data['is_active'] = user.is_active
 
@@ -105,6 +104,75 @@ class create_account(TemplateView):
                 message = {'status':'3','message': 'Datos ingresados satisfactoriamente.'}
                 data = json.dumps(message)
                 return HttpResponse(data, content_type =  "application/json")
+            except:
+                message = {'status':'2','message': str(traceback.format_exc())}
+                data = json.dumps(message)
+                return HttpResponse(data, content_type =  "application/json")
+
+
+class modify_account(TemplateView):
+
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax() and request.method == 'POST':
+            try:
+                username = request.POST.get('username')
+                firstname = request.POST.get('firstname')
+                lastname = request.POST.get('lastname')
+                admin = bool(request.POST.get('admin'))
+                active = bool(request.POST.get('active'))
+                newpassword = request.POST.get('password')
+                confirmpassword = request.POST.get('confirmpassword')
+            except:
+                message = {'status':'2','message': str(traceback.format_exc())}
+                data = json.dumps(message)
+                return HttpResponse(data, content_type =  "application/json")
+
+            try:
+                user_model = User.objects.get(username = username)
+            except User.DoesNotExist:
+                message = {'status':'1','message': 'Lo sentimos, este nombre de usuario no ha sido encontrado...'}
+                data = json.dumps(message)
+                return HttpResponse(data, content_type =  "application/json")
+
+            try:
+                user_model.first_name = firstname
+                user_model.last_name = lastname
+                user_model.is_superuser = admin
+                user_model.is_active = active
+                user_model.is_staff = admin
+                response_data = {}
+
+                if newpassword:
+                    if newpassword == confirmpassword:
+                        user_model.set_password( newpassword )
+
+                        user_model.save()
+                        response_data['status'] = '3'
+                        response_data['message'] = 'Datos modificados satisfactoriamente..'
+                        response_data['first_name'] = firstname
+                        response_data['is_superuser'] = admin
+                        response_data['is_active'] = active
+                        response_data['last_name'] = lastname
+                        data = json.dumps(response_data)
+                        return HttpResponse(data, content_type =  "application/json")
+                    else:
+                        message = {'status':'4','message': 'La contraseña tiene que coincidir'}
+                        data = json.dumps(message)
+                        return HttpResponse(data, content_type =  "application/json")
+
+                else:
+                    user_model.save()
+                    response_data['status'] = '3'
+                    response_data['message'] = 'Datos modificados satisfactoriamente..'
+                    response_data['first_name'] = firstname
+                    response_data['is_superuser'] = admin
+                    response_data['is_active'] = active
+                    response_data['last_name'] = lastname
+                    data = json.dumps(response_data)
+                    return HttpResponse(data, content_type =  "application/json")
+
+
+
             except:
                 message = {'status':'2','message': str(traceback.format_exc())}
                 data = json.dumps(message)

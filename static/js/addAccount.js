@@ -108,6 +108,7 @@ function load() {
                     html : "<strong>Excelente:</strong><br>" + data.message,
                     timer : true ? 5000 : 0
                 });
+              
               }
           },
           error: function (XMLHttpRequest, estado, errorS) {

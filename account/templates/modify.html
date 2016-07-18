@@ -13,14 +13,14 @@
 {% block content %}
 <div class="row">
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-sm-6 col-sm-offset-3" style="display:none" id="formModify">
       <div class="panel">
         <div class="panel-heading">
-          <h3 class="panel-title">Nueva Cuenta de Usuario</h3>
+          <h3 class="panel-title">Modificar Cuenta de Usuario</h3>
         </div>
         <!--Horizontal Form-->
         <!--===================================================-->
-        <form class="form-horizontal" name="form-add-account" id="form-add-account" >
+        <form class="form-horizontal" name="form-modify-account" id="form-modify-account" >
           <fieldset>
             {% csrf_token %}
             <div class="panel-body">
