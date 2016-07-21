@@ -93,7 +93,7 @@ function load() {
                     timer : true ? 5000 : 0
                 });
 
-              } else if (data.status === 2) {
+              } else if (data.status === '2') {
                 $.niftyNoty({
                     type: 'danger',
                     container : 'floating',
