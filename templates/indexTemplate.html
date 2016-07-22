@@ -33,28 +33,27 @@
 
                 <div class="col-md-4">
                     <h6><i class="icon-heart"></i> Que es el Nic Ni?</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et, iaculis ac massa. </p>
+                    <p>{{ configuration.concepto }} </p>
                 </div>
 
                 <div class="col-md-4">
-                    <h6><i class="icon-attachment"></i> Visitas Recientes</h6>
+                    <h6><i class="icon-attachment"></i> Redes Sociales</h6>
                     <ul class="list-unstyled">
-                        <li><a href="#"><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit </a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i> Lorem ipsum dolor sit amet</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i> Dolor sit amet,consectetur adipiscing elit amet</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i> Consectetur adipiscing elit amet,consectetur adipiscing elit</a></li>
+                        <li><a href="#"><i class="fa fa-facebook"></i> <b>Facebook:</b> {{ configuration.facebook }}</a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i> <b>Google Plus:</b> {{ configuration.google_plus }}</a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i> <b>Linkedin:</b> {{ configuration.linkedin }}</a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i> <b>Instagram:</b> {{ configuration.instagram }}</a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i> <b>Twitter:</b> {{ configuration.twitter }}</a></li>
                     </ul>
                 </div>
 
                 <div class="col-md-4">
                     <h6><i class="icon-envelope"></i> Información de Contacto</h6>
                     <ul class="list-unstyled">
-                        <li><b>Dirección:</b> Avenidad Simon Bolivar,
-                            <br /> Universidad Nacional de Ingeniería</li>
-                        <li><b>Teléfono:</b> (505)22703141</li>
+                        <li><b>Dirección:</b>{{ configuration.direccion }}</li>
+                        <li><b>Teléfono:</b> {{ configuration.telefono }}</li>
                         <li><b>Correo:</b>
-                            <a href="mailto:support@yourname.com"></a>info@nic.ni</li>
+                            <a href="mailto:support@yourname.com"></a>{{ configuration.correo }}</li>
                     </ul>
                 </div>
 
@@ -254,10 +253,10 @@
                         <img class="footer-logo" src="{% static 'assets/images/logoNi.png' %}" alt="" />
 
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            {{ configuration.concepto }}
                         </p>
 
-                        <h2>(505) 22703141</h2>
+                        <h2>{{ configuration.telefono }}</h2>
 
                     </div>
                     <!-- /col #1 -->
@@ -299,29 +298,29 @@
 
                     <!-- Social Icons -->
                     <div class="pull-right">
-                        <a href="#" class="social-icon social-icon-sm social-icon-transparent social-facebook" data-toggle="tooltip" data-placement="top" title="Facebook">
+                        <a href="{{ configuration.facebook }}" class="social-icon social-icon-sm social-icon-transparent social-facebook" data-toggle="tooltip" data-placement="top" title="Facebook">
                             <i class="icon-facebook"></i>
                             <i class="icon-facebook"></i>
                         </a>
 
-                        <a href="#" class="social-icon social-icon-sm social-icon-transparent social-twitter" data-toggle="tooltip" data-placement="top" title="Twitter">
+                        <a href="{{ configuration.twitter }}" class="social-icon social-icon-sm social-icon-transparent social-twitter" data-toggle="tooltip" data-placement="top" title="Twitter">
                             <i class="icon-twitter"></i>
                             <i class="icon-twitter"></i>
                         </a>
 
-                        <a href="#" class="social-icon social-icon-sm social-icon-transparent social-gplus" data-toggle="tooltip" data-placement="top" title="Google plus">
+                        <a href="{{ configuration.google_plus }}" class="social-icon social-icon-sm social-icon-transparent social-gplus" data-toggle="tooltip" data-placement="top" title="Google plus">
                             <i class="icon-gplus"></i>
                             <i class="icon-gplus"></i>
                         </a>
 
-                        <a href="#" class="social-icon social-icon-sm social-icon-transparent social-linkedin" data-toggle="tooltip" data-placement="top" title="Linkedin">
+                        <a href="{{ configuration.linkedin }}" class="social-icon social-icon-sm social-icon-transparent social-linkedin" data-toggle="tooltip" data-placement="top" title="Linkedin">
                             <i class="icon-linkedin"></i>
                             <i class="icon-linkedin"></i>
                         </a>
 
-                        <a href="#" class="social-icon social-icon-sm social-icon-transparent social-rss" data-toggle="tooltip" data-placement="top" title="Rss">
-                            <i class="icon-rss"></i>
-                            <i class="icon-rss"></i>
+                        <a href="{{ configuration.instagram }}" class="social-icon social-icon-sm social-icon-transparent social-instagram" data-toggle="tooltip" data-placement="top" title="Instagram">
+                            <i class="icon-instagram"></i>
+                            <i class="icon-instagram"></i>
                         </a>
                     </div>
                     <!-- /Social Icons -->

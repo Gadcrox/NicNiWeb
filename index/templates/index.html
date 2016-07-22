@@ -46,7 +46,7 @@
     <div class="row">
 
       <div class="col-md-9 col-sm-12"><!-- left text -->
-        <h3>Llama ahora al <span class="blue-1-text"><strong>+505-2270-3141</strong></span> y pregunta sobre los grandiosos paquetes promocionales</h3>
+        <h3>Llama ahora al <span class="blue-1-text"><strong>+{{ configuration.telefono }}</strong></span> y pregunta sobre los grandiosos paquetes promocionales</h3>
         <p class="font-lato weight-300 size-20 nomargin-bottom">
           Nosotros estaremos atendiendo todas tus dudas.
         </p>
@@ -77,15 +77,10 @@
 
       <div class="col-md-7 col-sm-7">
 
-        <header class="margin-bottom-60">
-          <h2>Reseña Historica del Nic.Ni</h2>
-          <p class="lead font-lato">Lorem ipsum dolor sit amet, consectetur adipisicing elit!</p>
-        </header>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus deserunt, nobis quae eos provident quidem. Quaerat expedita dignissimos perferendis, nihil quo distinctio eius architecto reprehenderit maiores.</p>
-        <p>Similique excepturi voluptates placeat ducimus delectus magnam tempore dolore dolorem quisquam porro modi voluptatum eum saepe dolorum ratione officia sint eos minus.</p>
-
-        <a class="btn btn-default btn-lg size-15 margin-top-30 lightbox" href="http://vimeo.com/56624256" data-plugin-options='{"type":"iframe"}'>VER VIDEO</a>
+        <p>
+          {{ configuration.historia|truncatechars:1000|safe }}
+        </p>
+        <a class="btn btn-default btn-lg size-15 margin-top-30 lightbox" href="http://vimeo.com/56624256" data-plugin-options='{"type":"iframe"}'>Historia Completa</a>
 
       </div>
 

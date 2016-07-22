@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^administrator/', include('administrator.urls')),
     url(r'^administrator/accounts/', include('account.urls')),
     url(r'^administrator/carousel/', include('carousel.urls')),
+    url(r'^administrator/configuration/', include('configuration.urls')),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,140 @@
+{% extends 'administratorTemplate.html' %}
+{% load staticfiles %}
+
+{% block title %}Administrador | Nic Ni{% endblock title %}
+
+{% block header %}
+<link href="{% static 'nifty/plugins/bootstrap-validator/bootstrapValidator.min.css' %}" rel="stylesheet">
+<link href="{% static 'nifty/plugins/summernote/summernote.min.css' %}" rel="stylesheet">
+{% endblock header %}
+{% block pagetittle %}Guardar Configuración {% endblock pagetittle %}
+{% block breadcumbs %}Configuración{% endblock breadcumbs %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-12">
+
+    <div class="tab-base">
+      {% csrf_token %}
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a data-toggle="tab" href="#tabHistoria">Historia</a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#tabInformacion">Información</a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="tabHistoria" class="tab-pane fade active in">
+          <h4 class="text-thin">Historia del Nic.Ni</h4>
+          <div class="panel">
+            <div class="panel-heading">
+              <h3 class="panel-title">Historia</h3>
+            </div>
+            <div class="panel-body">
+              <div id="editorHistoria"></div>
+            </div>
+          </div>
+        </div>
+        <div id="tabInformacion" class="tab-pane fade">
+          <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+              <div class="panel">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Información del Nic.Ni</h3>
+                </div>
+                <!--Horizontal Form-->
+                <!--===================================================-->
+                <form class="form-horizontal" name="form-modify-configuration" id="form-modify-configuration" >
+                  <fieldset>
+          					<input type="hidden" name="idItemForm" id="idItemForm" value="">
+                    <div class="panel-body">
+                      <div class="form-group">
+                        <label class="col-sm-3 control-label">¿Qué es el Nic.Ni?:</label>
+                        <div class="col-sm-9">
+                          <textarea name="concepto" class="form-control" rows="8" cols="40">{{ configuration.concepto }}</textarea>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-3 control-label" for="demo-hor-inputemail">Teléfono:</label>
+                        <div class="col-sm-9">
+                          <input type="text" placeholder="Teléfono" value="{{ configuration.telefono }}" name="telefono" class="form-control">
+                        </div>
+                      </div>
+                      <div class="form-group" >
+                        <label class="col-sm-3 control-label" for="demo-hor-inputemail">Correo:</label>
+                        <div class="col-sm-9">
+                          <input type="email" placeholder="correo@correo.com" name="correo" value="{{ configuration.correo }}" class="form-control">
+                        </div>
+                      </div>
+                      <div class="form-group" >
+                        <label class="col-sm-3 control-label" for="demo-hor-inputemail">Dirección:</label>
+                        <div class="col-sm-9">
+                          <textarea name="direccion" class="form-control" rows="8" cols="40">{{ configuration.direccion }}</textarea>
+                        </div>
+                      </div>
+
+                      <div class="form-group" >
+                        <label class="col-sm-3 control-label" for="demo-hor-inputemail">Código Postal:</label>
+                        <div class="col-sm-9">
+                          <input type="email" placeholder="Código Postal" value="{{ configuration.codigo_postal }}" name="codigo_postal" class="form-control">
+                        </div>
+                      </div>
+
+                      <div class="form-group" >
+                        <label class="col-sm-3 control-label" for="demo-hor-inputemail">Facebook:</label>
+                        <div class="col-sm-9">
+                          <input type="email" placeholder="facebook" value="{{ configuration.facebook }}" name="facebook" class="form-control">
+                        </div>
+                      </div>
+                      <div class="form-group" >
+                        <label class="col-sm-3 control-label" for="demo-hor-inputemail">Google Plus:</label>
+                        <div class="col-sm-9">
+                          <input type="email" placeholder="Google Plus" value="{{ configuration.google_plus }}" name="google_plus" class="form-control">
+                        </div>
+                      </div>
+                      <div class="form-group" >
+                        <label class="col-sm-3 control-label" for="demo-hor-inputemail">LinkedIn:</label>
+                        <div class="col-sm-9">
+                          <input type="email" placeholder="Linkedin" name="linkedin" value="{{ configuration.linkedin }}" class="form-control">
+                        </div>
+                      </div>
+                      <div class="form-group" >
+                        <label class="col-sm-3 control-label" for="demo-hor-inputemail">Instagram:</label>
+                        <div class="col-sm-9">
+                          <input type="email" placeholder="Instagram" name="instagram" value="{{ configuration.instagram }}" class="form-control">
+                        </div>
+                      </div>
+                      <div class="form-group" >
+                        <label class="col-sm-3 control-label" for="demo-hor-inputemail">Twitter:</label>
+                        <div class="col-sm-9">
+                          <input type="email" placeholder="Twitter" name="Twitter" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+
+                  </fieldset>
+
+                </form>
+                <!--===================================================-->
+                <!--End Horizontal Form-->
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer text-right">
+          <button class="btn btn-info btn-labeled fa fa-floppy-o fa-lg" type="button" id="btnGuardar" >Guardar</button>
+          <button class="btn btn-warning btn-labeled fa fa-repeat fa-lg" id="btnLimpiar" type="reset">Limpiar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% block script %}
+<script src="{% static 'nifty/plugins/bootstrap-validator/bootstrapValidator.min.js' %}"></script>
+<script src="{% static 'nifty/plugins/masked-input/jquery.maskedinput.min.js' %}"></script>
+<script src="{% static 'nifty/plugins/summernote/summernote.min.js' %}"></script>
+<script src="{% static 'js/addConfiguration.js' %}" type="text/javascript"></script>
+{% endblock script %}

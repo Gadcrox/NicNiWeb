@@ -4,6 +4,7 @@ var faIcon = {
   invalid: 'fa fa-times-circle fa-lg',
   validating: 'fa fa-refresh'
 }
+var modificar = false;
 function load(){
   var colapsed = $('#mainnav-menu').find('.active-link');
   if(colapsed.length){
@@ -52,7 +53,7 @@ function load(){
     var formData = new FormData( $( "form[name='form-add-item']" )[0] );
     var fileInput = $("form[name='form-add-item']").find("input[type=file]")[0]
     var file = fileInput.files && fileInput.files[0];
-    if( file ) {
+    if( file.type == "image/jpeg" || file.type == "image/png" || file.type == "image/jpg" ) {
         var img = new Image();
 
         img.src = window.URL.createObjectURL( file );
@@ -64,51 +65,101 @@ function load(){
             window.URL.revokeObjectURL( img.src );
 
             if( width == 1200 && height == 800 ) {
-              $.ajax({
-                  url : '/administrator/carousel/insert/',
-                  type : 'post',
-                  data : formData,
-                  async : true,
-                  contentType: false,
-                  processData: false,
-                  success: function(data) {
+              if(!modificar){
+                $.ajax({
+                    url : '/administrator/carousel/insert/',
+                    type : 'post',
+                    data : formData,
+                    async : true,
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
 
-                      if( data.status === '1' ) {
+                        if( data.status === '1' ) {
 
-                        $.niftyNoty({
-                            type: 'warning',
-                            container : 'floating',
-                            html : "<strong>Error:</strong><br>" + data.message,
-                            timer : true ? 5000 : 0
-                        });
+                          $.niftyNoty({
+                              type: 'warning',
+                              container : 'floating',
+                              html : "<strong>Error:</strong><br>" + data.message,
+                              timer : true ? 5000 : 0
+                          });
 
-                      } else if (data.status === '2') {
-                        $.niftyNoty({
-                            type: 'danger',
-                            container : 'floating',
-                            html : "<strong>Excelente:</strong><br>" + data.message,
-                            timer : false ? 5000 : 0
-                        });
-                      }else if( data.status === '3' ) {
-                        $.niftyNoty({
-                            type: 'success',
-                            container : 'floating',
-                            html : "<strong>Excelente:</strong><br>" + data.message,
-                            timer : true ? 5000 : 0
-                        });
-                        location.reload();
-                      }
-                  },
-                  error: function (XMLHttpRequest, estado, errorS) {
-                      var error = eval("(" + XMLHttpRequest.responseText + ")");
-                      console.log(error.Message);
-                      console.log(estado);
-                      console.log(errorS);
-                  },
-                  complete: function (jqXHR, estado) {
+                        } else if (data.status === '2') {
+                          $.niftyNoty({
+                              type: 'danger',
+                              container : 'floating',
+                              html : "<strong>Excelente:</strong><br>" + data.message,
+                              timer : false ? 5000 : 0
+                          });
+                        }else if( data.status === '3' ) {
+                          $.niftyNoty({
+                              type: 'success',
+                              container : 'floating',
+                              html : "<strong>Excelente:</strong><br>" + data.message,
+                              timer : true ? 5000 : 0
+                          });
+                          location.reload();
+                        }
+                    },
+                    error: function (XMLHttpRequest, estado, errorS) {
+                        var error = eval("(" + XMLHttpRequest.responseText + ")");
+                        console.log(error.Message);
+                        console.log(estado);
+                        console.log(errorS);
+                    },
+                    complete: function (jqXHR, estado) {
 
-                  }
-              });
+                    }
+                });
+
+              }else {
+                $.ajax({
+                    url : '/administrator/carousel/update/',
+                    type : 'post',
+                    data : formData,
+                    async : true,
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+
+                        if( data.status === '1' ) {
+
+                          $.niftyNoty({
+                              type: 'warning',
+                              container : 'floating',
+                              html : "<strong>Error:</strong><br>" + data.message,
+                              timer : false ? 5000 : 0
+                          });
+
+                        } else if (data.status === '2') {
+                          $.niftyNoty({
+                              type: 'danger',
+                              container : 'floating',
+                              html : "<strong>Excelente:</strong><br>" + data.message,
+                              timer : false ? 5000 : 0
+                          });
+                        }else if( data.status === '3' ) {
+                          $.niftyNoty({
+                              type: 'success',
+                              container : 'floating',
+                              html : "<strong>Excelente:</strong><br>" + data.message,
+                              timer : true ? 5000 : 0
+                          });
+                          location.reload();
+                        }
+                    },
+                    error: function (XMLHttpRequest, estado, errorS) {
+                        var error = eval("(" + XMLHttpRequest.responseText + ")");
+                        console.log(error.Message);
+                        console.log(estado);
+                        console.log(errorS);
+                    },
+                    complete: function (jqXHR, estado) {
+
+                    }
+                });
+              }
+
             }
             else {
               $.niftyNoty({
@@ -121,12 +172,18 @@ function load(){
         };
     }
     else { //No file was input or browser doesn't support client side reading
-
+      $.niftyNoty({
+          type: 'danger',
+          container : 'floating',
+          html : "<strong>Excelente:</strong><br>Formato de imagen invalido" ,
+          timer : true ? 5000 : 0
+      });
     }
 
   });
 
   $(".spanFigure").on('click', function(){
+    modificar = true;
     var id = $(this).children(':nth-child(3)').val();
     var token = $(this).children(':nth-child(2)').val();
     var formData = new FormData();
@@ -158,8 +215,10 @@ function load(){
                   timer : false ? 5000 : 0
               });
             }else if( data.status === '3' ) {
+              $("#idItemForm").val(data.id);
               $("#tittle").val(data.titulo);
               $("#description").val(data.caption);
+
             }
         },
         error: function (XMLHttpRequest, estado, errorS) {
@@ -172,5 +231,9 @@ function load(){
 
         }
     });
+  });
+
+  $("#btnCancelar").on('click', function(){
+    modificar = false;
   });
 }

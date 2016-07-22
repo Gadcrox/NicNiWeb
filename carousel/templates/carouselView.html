@@ -50,6 +50,7 @@
       <form class="form-horizontal" name="form-add-item" id="form-add-item" >
         <fieldset>
           {% csrf_token %}
+					<input type="hidden" name="idItemForm" id="idItemForm" value="">
           <div class="panel-body">
             <div class="form-group" id="fgUserName">
               <label class="col-sm-3 control-label">Título:</label>
@@ -67,14 +68,14 @@
               <label class="col-sm-3 control-label" for="demo-hor-inputemail">Imagen:</label>
               <div class="col-sm-9">
                 <input class="custom-file-upload" type="file" name="fileImage" id="fileImage" data-btn-text="Seleccionar Archivo" />
-                <small class="text-muted block">Tamaño Maximo: 10Mb (jpg/png)</small>
+                <small class="text-muted block">Tamaño Maximo: 10Mb (jpeg/jpg/png)</small>
               </div>
             </div>
 
           </div>
           <div class="panel-footer text-right">
             <button class="btn btn-info btn-labeled fa fa-plus fa-lg" type="submit">Guardar</button>
-            <button class="btn btn-warning btn-labeled fa fa-times fa-lg" id="btnLimpiar" type="button">Cancelar</button>
+            <button class="btn btn-warning btn-labeled fa fa-times fa-lg" id="btnCancelar" type="reset">Cancelar</button>
           </div>
         </fieldset>
 
