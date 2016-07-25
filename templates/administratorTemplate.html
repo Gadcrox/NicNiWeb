@@ -168,7 +168,7 @@
 
                   <li class="list-header">Información</li>
                   <li>
-                    <a href="index.html">
+                    <a href="#">
                       <i class="fa fa-newspaper-o" aria-hidden="true"></i>
                       <span class="menu-title">
                         <strong>Noticias</strong>
@@ -178,6 +178,19 @@
                     <ul class="collapse">
                       <li><a href="layouts-collapsed-navigation.html">Agregar</a></li>
                       <li><a href="layouts-collapsed-navigation.html">Modificar</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-users"></i>
+                      <span class="menu-title">
+                        <strong>Servicios</strong>
+                      </span>
+                      <i class="arrow"></i>
+                    </a>
+                    <ul class="collapse">
+                      <li><a href="{% url 'services.add' %}">Agregar</a></li>
+                      <li><a href="#">Modificar</a></li>
                     </ul>
                   </li>
                   <li>

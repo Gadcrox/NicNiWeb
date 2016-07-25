@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'administrator',
     'account',
     'carousel',
-    'configuration'
+    'configuration',
+    'services'
 ]
 
 MIDDLEWARE_CLASSES = [

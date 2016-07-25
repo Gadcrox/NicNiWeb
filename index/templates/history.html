@@ -1,0 +1,49 @@
+{% extends 'indexTemplate.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Nic Ni | Universidad Nacional de Ingeniería{% endblock title %}
+
+{% block header %}
+{% endblock header %}
+{% block breadcumbs %}Historia{% endblock breadcumbs %}
+{% block content %}
+<!-- -->
+<section>
+  <div class="container">
+
+    <!-- OWL SLIDER -->
+
+    <!-- /OWL SLIDER -->
+
+    <!-- IMAGE -->
+    <!--
+    <figure class="margin-bottom-20">
+      <img class="img-responsive" src="assets/images/demo/content_slider/10-min.jpg" alt="img" />
+    </figure>
+    -->
+    <!-- /IMAGE -->
+
+    <!-- VIDEO -->
+    <!--
+    <div class="margin-bottom-20 embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="http://player.vimeo.com/video/8408210" width="800" height="450"></iframe>
+    </div>
+    -->
+    <!-- /VIDEO -->
+
+    <div class="margin-bottom-20 embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="http://player.vimeo.com/video/8408210" width="800" height="450"></iframe>
+    </div>
+    -->
+    {{ configuration.historia|safe }}
+  
+  </div>
+</section>
+<!-- / -->
+
+
+
+{% endblock content %}
+{% block script %}
+{% endblock script %}

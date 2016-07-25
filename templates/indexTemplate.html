@@ -97,14 +97,14 @@
 
                     </ul>
 
-                    <a class="logo pull-left" href="index.html">
+                    <a class="logo pull-left" href="{% url 'index.index' %}">
                         <img src="{% static 'assets/images/logoNi.png' %}" alt="" />
                     </a>
                     <div class="navbar-collapse pull-right nav-main-collapse collapse submenu-dark">
                       <nav class="nav-main">
                         <ul id="topMain" class="nav nav-pills nav-main">
                           <li>
-                            <a class="" href="#">
+                            <a class="" href="{% url 'index.index' %}">
                             Inicio
                             </a>
                           </li>
@@ -172,7 +172,7 @@
                             </a>
                             <ul class="dropdown-menu">
                             <li>
-                              <a class="" href="#">
+                              <a class="" href="{% url 'historia.index' %}">
                                 Historia
                               </a>
                             </li>
@@ -221,7 +221,7 @@
                           </li>
 
                           <li>
-                            <a class="" href="#">
+                            <a class="" href="{% url 'contactenos.index' %}">
                               Contáctenos
                             </a>
                           </li>
@@ -235,6 +235,7 @@
           <div class="container">
             <ol class="breadcrumb breadcrumb-inverse">
               <li><a href="#">Inicio</a></li>
+              <li><a href="#">{% block breadcumbs %}{% endblock breadcumbs %}</a></li>
             </ol>
           </div>
         </section>

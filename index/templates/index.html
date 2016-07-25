@@ -78,9 +78,9 @@
       <div class="col-md-7 col-sm-7">
 
         <p>
-          {{ configuration.historia|truncatechars:1000|safe }}
+          {{ configuration.historia|truncatechars:1200|safe }}
         </p>
-        <a class="btn btn-default btn-lg size-15 margin-top-30 lightbox" href="http://vimeo.com/56624256" data-plugin-options='{"type":"iframe"}'>Historia Completa</a>
+        <a class="btn btn-default btn-lg size-15 margin-top-30" href="{% url 'historia.index' %}">Historia Completa</a>
 
       </div>
 

@@ -1,0 +1,20 @@
+{% extends 'AdministratorTemplate.html' %}
+{% load staticfiles %}
+
+{% block title %}Administrador | Nic Ni{% endblock title %}
+
+{% block header %}
+<link href="{% static 'nifty/plugins/bootstrap-validator/bootstrapValidator.min.css' %}" rel="stylesheet">
+<link href="{% static 'nifty/plugins/summernote/summernote.min.css' %}" rel="stylesheet">
+{% endblock header %}
+{% block pagetittle %}Servicios {% endblock pagetittle %}
+{% block breadcumbs %}Agregar Servicios{% endblock breadcumbs %}
+{% block content %}
+
+{% endblock content %}
+{% block script %}
+<script src="{% static 'nifty/plugins/bootstrap-validator/bootstrapValidator.min.js' %}"></script>
+<script src="{% static 'nifty/plugins/masked-input/jquery.maskedinput.min.js' %}"></script>
+<script src="{% static 'nifty/plugins/summernote/summernote.min.js' %}"></script>
+<script src="{% static 'js/addServices.js' %}" type="text/javascript"></script>
+{% endblock script %}

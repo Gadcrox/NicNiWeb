@@ -1,0 +1,132 @@
+{% extends 'indexTemplate.html' %}
+{% load staticfiles %}
+
+{% block title %}Nic Ni | Universidad Nacional de Ingeniería{% endblock title %}
+
+{% block header %}
+{% endblock header %}
+
+{% block breadcumbs %}Contáctenos{% endblock breadcumbs %}
+{% block content %}
+<section>
+
+  <div id="map2" class="contact-over-map"></div>
+
+  <div class="container">
+
+    <div class="contact-over-box pull-right">
+
+      <h3 class="size-20"><strong>Contáctenos</strong></h3>
+
+
+      <!--
+        MESSAGES
+
+          How it works?
+          The form data is posted to php/contact.php where the fields are verified!
+          php.contact.php will redirect back here and will add a hash to the end of the URL:
+            #alert_success 		= email sent
+            #alert_failed		= email not sent - internal server error (404 error or SMTP problem)
+            #alert_mandatory	= email not sent - required fields empty
+            Hashes are handled by assets/js/contact.js
+
+          Form data: required to be an array. Example:
+            contact[email][required]  WHERE: [email] = field name, [required] = only if this field is required (PHP will check this)
+            Also, add `required` to input fields if is a mandatory field.
+            Example: <input required type="email" value="" class="form-control" name="contact[email][required]">
+
+          PLEASE NOTE: IF YOU WANT TO ADD OR REMOVE FIELDS (EXCEPT CAPTCHA), JUST EDIT THE HTML CODE, NO NEED TO EDIT php/contact.php or javascript
+                 ALL FIELDS ARE DETECTED DINAMICALY BY THE PHP
+
+          WARNING! Do not change the `email` and `name`!
+                contact[name][required] 	- should stay as it is because PHP is using it for AddReplyTo (phpmailer)
+                contact[email][required] 	- should stay as it is because PHP is using it for AddReplyTo (phpmailer)
+      -->
+
+      <!-- Alert Success -->
+      <div id="alert_success" class="alert alert-success margin-bottom-30">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Gracias!</strong> Su mensaje a sido enviado exitosamente!
+      </div><!-- /Alert Success -->
+
+
+      <!-- Alert Failed -->
+      <div id="alert_failed" class="alert alert-danger margin-bottom-30">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>[SMTP] Error!</strong> Error Interno!
+      </div><!-- /Alert Failed -->
+
+
+      <!-- Alert Mandatory -->
+      <div id="alert_mandatory" class="alert alert-danger margin-bottom-30">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Advertencia!</strong> Necesita completar todos los campos requeridos!
+      </div><!-- /Alert Mandatory -->
+
+
+      <form action="php/contact.php" method="post" enctype="multipart/form-data">
+        <fieldset>
+          <input type="hidden" name="action" value="contact_send" />
+
+          <div class="row">
+            <div class="col-md-12 margin-bottom-20">
+              <label for="contact:name">Nombre Completo *</label>
+              <input required type="text" value="" class="form-control" name="nombre" id="nombre">
+            </div>
+            <div class="col-md-12 margin-bottom-20">
+              <label for="contact:email">Correo: *</label>
+              <input required type="email" value="" class="form-control" name="email" id="correo">
+            </div>
+
+            <div class="col-md-12 margin-bottom-20">
+              <label for="contact:message">Message *</label>
+              <textarea required maxlength="10000" rows="6" class="form-control" name="mensaje" id="mensaje"></textarea>
+            </div>
+          </div>
+
+        </fieldset>
+
+        <div class="row">
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-info"><i class="fa fa-check"></i> Enviar Mensaje</button>
+          </div>
+        </div>
+      </form>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+{% endblock content %}
+
+{% block script %}
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" src="{% static 'assets/plugins/gmaps.js' %}"></script>
+<script type="text/javascript">
+
+  jQuery(document).ready(function(){
+
+    /**
+      @BASIC GOOGLE MAP
+    **/
+    var map2 = new GMaps({
+      div: '#map2',
+      lat: 12.129160,
+      lng: -86.269731,
+      scrollwheel: false,
+      zoom: 16
+    });
+
+    var marker = map2.addMarker({
+      lat: 12.129160,
+      lng: -86.269731,
+      title: 'Nic.Ni'
+    });
+
+  });
+
+</script>
+{% endblock script %}

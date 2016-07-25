@@ -2,7 +2,7 @@ $(document).ready(load)
 
 function load(){
 
-  $("input[name='telefono']").mask('(999) 999-9999');
+  $("input[name='telefono']").mask('(999) 9999-9999');
   $('#editorHistoria').summernote({
     height: 500
   });

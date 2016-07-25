@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^administrator/accounts/', include('account.urls')),
     url(r'^administrator/carousel/', include('carousel.urls')),
     url(r'^administrator/configuration/', include('configuration.urls')),
+    url(r'^administrator/services/', include('services.urls')),
 ]
 
 if settings.DEBUG:

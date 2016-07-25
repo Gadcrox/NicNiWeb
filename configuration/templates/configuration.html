@@ -32,7 +32,7 @@
               <h3 class="panel-title">Historia</h3>
             </div>
             <div class="panel-body">
-              <div id="editorHistoria"></div>
+              <div id="editorHistoria">{{ configuration.historia|safe }}</div>
             </div>
           </div>
         </div>
@@ -77,38 +77,38 @@
                       <div class="form-group" >
                         <label class="col-sm-3 control-label" for="demo-hor-inputemail">Código Postal:</label>
                         <div class="col-sm-9">
-                          <input type="email" placeholder="Código Postal" value="{{ configuration.codigo_postal }}" name="codigo_postal" class="form-control">
+                          <input type="text" placeholder="Código Postal" value="{{ configuration.codigo_postal }}" name="codigo_postal" class="form-control">
                         </div>
                       </div>
 
                       <div class="form-group" >
                         <label class="col-sm-3 control-label" for="demo-hor-inputemail">Facebook:</label>
                         <div class="col-sm-9">
-                          <input type="email" placeholder="facebook" value="{{ configuration.facebook }}" name="facebook" class="form-control">
+                          <input type="text" placeholder="facebook" value="{{ configuration.facebook }}" name="facebook" class="form-control">
                         </div>
                       </div>
                       <div class="form-group" >
                         <label class="col-sm-3 control-label" for="demo-hor-inputemail">Google Plus:</label>
                         <div class="col-sm-9">
-                          <input type="email" placeholder="Google Plus" value="{{ configuration.google_plus }}" name="google_plus" class="form-control">
+                          <input type="text" placeholder="Google Plus" value="{{ configuration.google_plus }}" name="google_plus" class="form-control">
                         </div>
                       </div>
                       <div class="form-group" >
                         <label class="col-sm-3 control-label" for="demo-hor-inputemail">LinkedIn:</label>
                         <div class="col-sm-9">
-                          <input type="email" placeholder="Linkedin" name="linkedin" value="{{ configuration.linkedin }}" class="form-control">
+                          <input type="text" placeholder="Linkedin" name="linkedin" value="{{ configuration.linkedin }}" class="form-control">
                         </div>
                       </div>
                       <div class="form-group" >
                         <label class="col-sm-3 control-label" for="demo-hor-inputemail">Instagram:</label>
                         <div class="col-sm-9">
-                          <input type="email" placeholder="Instagram" name="instagram" value="{{ configuration.instagram }}" class="form-control">
+                          <input type="text" placeholder="Instagram" name="instagram" value="{{ configuration.instagram }}" class="form-control">
                         </div>
                       </div>
                       <div class="form-group" >
                         <label class="col-sm-3 control-label" for="demo-hor-inputemail">Twitter:</label>
                         <div class="col-sm-9">
-                          <input type="email" placeholder="Twitter" name="Twitter" class="form-control">
+                          <input type="text" placeholder="Twitter" value="{{ configuration.twitter }}" name="twitter" class="form-control">
                         </div>
                       </div>
                     </div>
