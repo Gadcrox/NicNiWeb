@@ -141,28 +141,13 @@
                             Servicios
                             </a>
                             <ul class="dropdown-menu">
+                              {% for service in services_list %}
                               <li>
-                                <a class="" href="#">
-                                  Dominios
-                                </a>
-                            </li>
-                              <li>
-                                <a class="" href="#">
-                                  Páginas Web
+                                <a class="" href="{% url 'service.index' service.slug %}">
+                                  {{ service.titulo }}
                                 </a>
                               </li>
-                            <li>
-                              <a class="" href="#">
-                                Hosting
-                              </a>
-                            </li>
-
-                            <li>
-                              <a class="" href="#">
-                                Cuentas de Correo
-                              </a>
-                            </li>
-
+                              {% endfor %}
                             </ul>
                           </li>
 

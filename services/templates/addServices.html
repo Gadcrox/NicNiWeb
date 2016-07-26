@@ -10,7 +10,51 @@
 {% block pagetittle %}Servicios {% endblock pagetittle %}
 {% block breadcumbs %}Agregar Servicios{% endblock breadcumbs %}
 {% block content %}
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel">
+      <div class="panel-heading">
+        <h3 class="panel-title">Servicios Ofrecidos</h3>
+      </div>
 
+        <form class="form-horizontal" name="form-add-services" id="form-add-services" >
+          <fieldset>
+            {% csrf_token %}
+            <div class="panel-body">
+              
+              <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Título:</label>
+                    <div class="col-sm-9">
+                      <input type="text" placeholder="Título" value="" name="titulo"  class="form-control">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <h3>Descripción</h3>
+                  <div id="editor"></div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="panel-footer text-right">
+              <button class="btn btn-info btn-labeled fa fa-floppy-o fa-lg" type="submit" id="btnGuardar">Guardar</button>
+              <button class="btn btn-warning btn-labeled fa fa-repeat fa-lg" id="btnLimpiar" type="reset">Limpiar</button>
+            </div>
+
+          </fieldset>
+
+        </form>
+
+
+
+    </div>
+  </div>
+</div>
 {% endblock content %}
 {% block script %}
 <script src="{% static 'nifty/plugins/bootstrap-validator/bootstrapValidator.min.js' %}"></script>

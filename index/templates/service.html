@@ -1,0 +1,23 @@
+{% extends 'indexTemplate.html' %}
+{% load staticfiles %}
+
+{% block title %}Nic Ni | Universidad Nacional de Ingeniería{% endblock title %}
+
+{% block header %}
+{% endblock header %}
+{% block breadcumbs %}Historia{% endblock breadcumbs %}
+{% block content %}
+<section>
+  <div class="container">
+
+
+    <h1 class="blog-post-title">{{ service_detail.titulo }}</h1>
+    <div class="divider divider-dotted"><!-- divider --></div>
+
+    {{ service_detail.descripcion|safe }}
+
+  </div>
+</section>
+{% endblock content %}
+{% block script %}
+{% endblock script %}

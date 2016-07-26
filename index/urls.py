@@ -5,5 +5,7 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index_view, name='index.index'),
     url(r'^historia/$', views.history_view, name='historia.index'),
-    url(r'^contact/$', views.contact_view, name='contactenos.index'),
+    url(r'^contactenos/$', views.contact_view, name='contactenos.index'),
+    url(r'^servicio/(?P<slug>[-\w]+)/$', views.service_index_view, name='service.index'),
+
 ]
