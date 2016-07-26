@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'account',
     'carousel',
     'configuration',
-    'services'
+    'services',
+    'news'
 ]
 
 MIDDLEWARE_CLASSES = [
