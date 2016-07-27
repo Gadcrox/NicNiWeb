@@ -1,0 +1,60 @@
+{% extends 'indexTemplate.html' %}
+{% load staticfiles %}
+
+{% block title %}Nic Ni | Universidad Nacional de Ingeniería{% endblock title %}
+
+{% block header %}
+{% endblock header %}
+{% block breadcumbs %}Noticia{% endblock breadcumbs %}
+{% block content %}
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-sm-9">
+
+        <h1 class="blog-post-title">{{ new_detail.title }}</h1>
+        <ul class="blog-post-info list-inline">
+          <li>
+            <a href="#">
+              <i class="fa fa-clock-o"></i>
+              <span class="font-lato">{{ new_detail.created_at }}</span>
+            </a>
+          </li>
+
+          <li>
+            <i class="fa fa-tags"></i>
+
+            <a class="category" href="#">
+              <span class="font-lato">{{new_detail.get_string_tags}}</span>
+            </a>
+
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-user"></i>
+              <span class="font-lato">{{ new_detail.author }}</span>
+            </a>
+          </li>
+        </ul>
+
+
+        <figure class="margin-bottom-20">
+          <img class="img-responsive" src="{% static 'assets/images/demo/content_slider/10-min.jpg' %}" alt="img" />
+        </figure>
+
+        {{ new_detail.body|safe }}
+
+
+        <!-- TAGS -->
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+{% endblock content %}
+{% block script %}
+{% endblock script %}
