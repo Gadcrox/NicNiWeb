@@ -52,13 +52,6 @@ function load(){
             message: "Este campo es requerido"
           }
         }
-      },
-      active:{
-        validators:{
-          notEmpty:{
-            message: "Este campo es requerido"
-          }
-        }
       }
     }
   }).on('success.form.bv', function(e){

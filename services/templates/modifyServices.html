@@ -3,7 +3,10 @@
 
 {% block title %}Administrador | Nic Ni{% endblock title %}
 
+
 {% block header %}
+<link href="{% static 'nifty/plugins/datatables/media/css/dataTables.bootstrap.css' %}" rel="stylesheet">
+<link href="{% static 'nifty/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css' %}" rel="stylesheet">
 <link href="{% static 'nifty/plugins/bootstrap-validator/bootstrapValidator.min.css' %}" rel="stylesheet">
 <link href="{% static 'nifty/plugins/summernote/summernote.min.css' %}" rel="stylesheet">
 {% endblock header %}
@@ -122,6 +125,9 @@
 </div>
 {% endblock content %}
 {% block script %}
+<script src="{% static 'nifty/plugins/datatables/media/js/jquery.dataTables.js' %}"></script>
+<script src="{% static 'nifty/plugins/datatables/media/js/dataTables.bootstrap.js' %}"></script>
+<script src="{% static 'nifty/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js' %}"></script>
 <script src="{% static 'nifty/plugins/bootstrap-validator/bootstrapValidator.min.js' %}"></script>
 <script src="{% static 'nifty/plugins/masked-input/jquery.maskedinput.min.js' %}"></script>
 <script src="{% static 'nifty/plugins/summernote/summernote.min.js' %}"></script>

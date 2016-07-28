@@ -8,6 +8,22 @@ function load(){
   $("#editor").summernote({
     height: 500
   });
+  $('#table-data').dataTable({
+    "responsive": true,
+    "language": {
+      "lengthMenu": "Mostrar _MENU_ registros",
+      "zeroRecords": "No se encontraron coincidencias...",
+      "infoEmpty": "registros encontrados:",
+      "infoFiltered": "(0 de 0)",
+      "processing": "Procesando...",
+      "search": "Buscar:",
+      "info": "Páginas Mostradas: _PAGE_ de _PAGES_",
+      "paginate": {
+        "previous": '<i class="fa fa-angle-left"></i>',
+        "next": '<i class="fa fa-angle-right"></i>'
+      }
+    }
+  });
   $("#form-modify-services").bootstrapValidator({
     excluded: [':disabled'],
     feedbackIcons: faIcon,

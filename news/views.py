@@ -18,6 +18,10 @@ from .models import Article, Tags
 def news_add_view(request):
     return render(request, 'addNews.html')
 
+def news_modify_view(request):
+    news_list = Article.objects.all().order_by('title')
+    context = {'news_list': news_list}
+    return render(request, 'modifyNews.html', context)
 
 class create_news(TemplateView):
     def post(self, request, *args, **kwargs):
@@ -66,6 +70,47 @@ class create_news(TemplateView):
 
                 message = {'status':'3','message': 'Datos ingresados satisfactoriamente.'}
                 data = json.dumps(message)
+                return HttpResponse(data, content_type =  "application/json")
+            except:
+                message = {'status':'1','message': str(traceback.format_exc())}
+                data = json.dumps(message)
+                return HttpResponse(data, content_type =  "application/json")
+
+class view_new(TemplateView):
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax() and request.method == 'POST':
+            try:
+                idNew = request.POST.get('idNew')
+            except:
+                message = {'status':'1','message': str(traceback.format_exc())}
+                data = json.dumps(message)
+                return HttpResponse(data, content_type =  "application/json")
+
+            try:
+                if not Article.objects.filter(id = idNew):
+                    message = {'status':'2','message': 'Lo sentimos, este titulo no existe...'}
+                    data = json.dumps(message)
+                    return HttpResponse(data, content_type =  "application/json")
+            except:
+                message = {'status':'1','message': str(traceback.format_exc())}
+                data = json.dumps(message)
+                return HttpResponse(data, content_type =  "application/json")
+
+            try:
+                new = Article.objects.get(id = idNew)
+                responseData = {}
+                responseData['status'] = '3'
+                responseData['id'] = new.id
+                responseData['titulo'] = new.title
+                tags = ""
+                for tag in new.tags.all():
+                    tags += tag
+                print tags
+                #responseData['tags'] = tags
+                responseData['autor'] = new.author
+                responseData['contenido'] = new.body
+
+                data = json.dumps(responseData)
                 return HttpResponse(data, content_type =  "application/json")
             except:
                 message = {'status':'1','message': str(traceback.format_exc())}
