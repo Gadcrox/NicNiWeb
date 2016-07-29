@@ -31,6 +31,7 @@ class create_news(TemplateView):
                 titulo = request.POST.get('titulo')
                 tags = request.POST.get('tags')
                 contenido = request.POST.get('contenido')
+                imagen = request.FILES.get('file', False)
             except:
                 message = {'status':'1','message': str(traceback.format_exc())}
                 data = json.dumps(message)
@@ -51,6 +52,7 @@ class create_news(TemplateView):
                 article_model.title = titulo
                 article_model.author = autor
                 article_model.body = contenido
+                article_model.imagen = imagen
                 article_model.created_at = timezone.now()
                 article_model.update_at = timezone.now()
                 article_model.save()
@@ -102,15 +104,78 @@ class view_new(TemplateView):
                 responseData['status'] = '3'
                 responseData['id'] = new.id
                 responseData['titulo'] = new.title
-                tags = ""
-                for tag in new.tags.all():
-                    tags += tag
-                print tags
-                #responseData['tags'] = tags
+                tags = ', '.join([tags.name for tags in new.tags.all()])
+                responseData['tags'] = tags
                 responseData['autor'] = new.author
                 responseData['contenido'] = new.body
 
                 data = json.dumps(responseData)
+                return HttpResponse(data, content_type =  "application/json")
+            except:
+                message = {'status':'1','message': str(traceback.format_exc())}
+                data = json.dumps(message)
+                return HttpResponse(data, content_type =  "application/json")
+
+class modify_news(TemplateView):
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax() and request.method == 'POST':
+            try:
+                idNewForm = request.POST.get('idNewForm')
+                titulo = request.POST.get('titulo')
+                tags = request.POST.get('tags')
+                autor = request.POST.get('autor')
+                contenido = request.POST.get('contenido')
+            except:
+                message = {'status':'1','message': str(traceback.format_exc())}
+                data = json.dumps(message)
+                return HttpResponse(data, content_type =  "application/json")
+
+            try:
+                if not Article.objects.filter(id = idNewForm):
+                    message = {'status':'2','message': 'Lo sentimos, este titulo no existe...'}
+                    data = json.dumps(message)
+                    return HttpResponse(data, content_type =  "application/json")
+            except:
+                message = {'status':'1','message': str(traceback.format_exc())}
+                data = json.dumps(message)
+                return HttpResponse(data, content_type =  "application/json")
+
+            try:
+                if Article.objects.filter(title = titulo):
+                    message = {'status':'2','message': 'Lo sentimos, este titulo ya ha siso registrado, por favor seleccione otro...'}
+                    data = json.dumps(message)
+                    return HttpResponse(data, content_type =  "application/json")
+            except:
+                message = {'status':'1','message': str(traceback.format_exc())}
+                data = json.dumps(message)
+                return HttpResponse(data, content_type =  "application/json")
+
+            try:
+                article = Article.objects.get(id=idNewForm)
+                article.title = titulo
+                article.author = autor
+                article.body = contenido
+                article.update_at = timezone.now()
+                article.save()
+
+                for tag in article.tags.all():
+                    article.tags.remove(tag)
+
+                tags = tags.split(',')
+                for tag in tags:
+                    try:
+                        tag_model = Tags.objects.get(name=tag.strip().upper())
+                        article.tags.add(tag_model)
+                        article.save()
+                    except Tags.DoesNotExist:
+                        tags_model = Tags()
+                        tags_model.name = tag.strip().upper()
+                        tags_model.save()
+                        article_model.tags.add(tags_model)
+                        article_model.save()
+
+                message = {'status':'3','message': 'Datos modificados correctamente...'}
+                data = json.dumps(message)
                 return HttpResponse(data, content_type =  "application/json")
             except:
                 message = {'status':'1','message': str(traceback.format_exc())}

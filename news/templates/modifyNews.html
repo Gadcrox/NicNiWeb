@@ -13,17 +13,18 @@
 {% block pagetittle %}Noticias {% endblock pagetittle %}
 {% block breadcumbs %}Agregar Noticia{% endblock breadcumbs %}
 {% block content %}
-<div class="row">
+<div class="row" style="display:none" id="div-modify">
   <div class="col-sm-12">
     <div class="panel">
       <div class="panel-heading">
-        <h3 class="panel-title">Nueva Noticia</h3>
+        <h3 class="panel-title">Modificar Noticia</h3>
       </div>
       <!--Horizontal Form-->
       <!--===================================================-->
-      <form class="form-horizontal" name="form-add-news" id="form-add-news" >
+      <form class="form-horizontal" name="form-modify-news" id="form-modify-news" >
         <fieldset>
           {% csrf_token %}
+          <input type="hidden" name="idNewForm" id="idNewForm" value="">
           <div class="panel-body">
             <div class="row">
               <div class="col-sm-6 col-sm-offset-3">
